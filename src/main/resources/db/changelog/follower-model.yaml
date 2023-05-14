@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-Follower-schema
+      author: moaz.amin
+      changes:
+        - createSequence:
+            sequenceName: SEQ_FOLLOWER_ID
+            incrementBy: 1
+            startValue: 1
+        - createTable:
+            tableName: FOLLOWER
+            columns:
+              - column:
+                  name: ID
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: FOLLOWER_PKEY
+              - column:
+                  name: USER_ID
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: FOLLOWER_ID
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: DELETED
+                  type: boolean

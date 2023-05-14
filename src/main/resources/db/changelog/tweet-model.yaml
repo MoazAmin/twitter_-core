@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-tweet-schema
+      author: moaz.amin
+      changes:
+        - createSequence:
+            sequenceName: SEQ_TWEET_ID
+            incrementBy: 1
+            startValue: 1
+        - createTable:
+            tableName: TWEET
+            columns:
+              - column:
+                  name: ID
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: TWEET_PKEY
+              - column:
+                  name: CREATED
+                  type: timestamp(6)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: DELETED
+                  type: boolean
+              - column:
+                  name: LIKES
+                  type: bigint
+              - column:
+                  name: USER_ID
+                  type: bigint
+              - column:
+                  name: TWEET_STRING
+                  type: varchar(250)
+              - column:
+                  name: PICTURE
+                  type: varchar(250)

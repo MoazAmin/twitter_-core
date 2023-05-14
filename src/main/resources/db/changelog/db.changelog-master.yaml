@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - include:
+      file: user-model.yaml
+      relativeToChangelogFile: true
+#  - include:
+#      file: user-data.yaml
+#      relativeToChangeLogFile: true
+#  - include:
+#      file: user-role-data.yaml
+#      relativeToChangeLogFile: true
+  - include:
+      file: tweet-model.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: follower-model.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: constraints.yaml
+      relativeToChangelogFile: true

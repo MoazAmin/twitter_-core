@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-constraints-and-foreignKeys
+      author: moaz.amin
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: USER_ID
+            baseTableName: FOLLOWER
+            constraintName: FOLLOWER_USER_CONSTRAINT
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            referencedColumnNames: ID
+            referencedTableName: UM_USER
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: FOLLOWER_ID
+            baseTableName: FOLLOWER
+            constraintName: FOLLOWEE_USER_CONSTRAINT
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            referencedColumnNames: ID
+            referencedTableName: UM_USER
+            validate: true
+        - addForeignKeyConstraint:
+              baseColumnNames: USER_ID
+              baseTableName: TWEET
+              constraintName: TWEET_USER_CONSTRAINT
+              deferrable: false
+              initiallyDeferred: false
+              onDelete: RESTRICT
+              referencedColumnNames: ID
+              referencedTableName: UM_USER
+              validate: true
