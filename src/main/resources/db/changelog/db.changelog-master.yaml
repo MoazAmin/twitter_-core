@@ -15,5 +15,8 @@ databaseChangeLog:
       file: follower-model.yaml
       relativeToChangelogFile: true
   - include:
+      file: comment-model.yaml
+      relativeToChangelogFile: true
+  - include:
       file: constraints.yaml
       relativeToChangelogFile: true

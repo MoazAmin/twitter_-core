@@ -37,3 +37,7 @@ databaseChangeLog:
               - column:
                   name: PICTURE
                   type: varchar(250)
+              - column:
+                  name: COMMENT_ID
+                  type: bigint
+

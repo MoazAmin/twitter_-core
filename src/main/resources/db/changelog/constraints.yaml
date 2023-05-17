@@ -33,3 +33,13 @@ databaseChangeLog:
               referencedColumnNames: ID
               referencedTableName: UM_USER
               validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: COMMENT_ID
+            baseTableName: COMMENT
+            constraintName: TWEET_COMMENT_CONSTRAINT
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            referencedColumnNames: ID
+            referencedTableName: TWEET
+            validate: true

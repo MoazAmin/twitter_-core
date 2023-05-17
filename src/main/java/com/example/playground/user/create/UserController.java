@@ -31,7 +31,6 @@ public class UserController {
     @PutMapping (path = "upload")
     public ResponseEntity<Object> uploadImage(@RequestParam("file") MultipartFile multipartFile){
         try {
-            System.out.println("passed here 1");
             userService.saveImage(multipartFile);
         } catch (RuntimeException | IOException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

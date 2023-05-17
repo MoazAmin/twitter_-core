@@ -1,14 +1,14 @@
 databaseChangeLog:
   - changeSet:
-      id: create-Follower-schema
+      id: create-tweet-schema
       author: moaz.amin
       changes:
         - createSequence:
-            sequenceName: SEQ_FOLLOWER_ID
+            sequenceName: SEQ_COMMENT_ID
             incrementBy: 1
             startValue: 1
         - createTable:
-            tableName: FOLLOWER
+            tableName: COMMENT
             columns:
               - column:
                   name: ID
@@ -16,13 +16,11 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                     primaryKey: true
-                    primaryKeyName: FOLLOWER_PKEY
+                    primaryKeyName: COMMENT_PKEY
               - column:
-                  name: USER_ID
+                  name: COMMENT_ID
                   type: bigint
               - column:
-                  name: FOLLOWER_ID
+                  name: TWEET_ID
                   type: bigint
-              - column:
-                  name: DELETED
-                  type: boolean
+

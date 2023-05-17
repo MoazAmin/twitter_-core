@@ -1,39 +1,42 @@
 package com.example.playground.follower;
 
 import com.example.playground.user.User;
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.time.LocalDateTime;
-import java.util.List;
-
 
 @Data
 @Builder
 @AllArgsConstructor
 @Entity
+@Getter
 @RequiredArgsConstructor
 @Table(name = "follower")
 public class Follower {
 
     @Id
-    @SequenceGenerator(name = "tweetIdGenerator", sequenceName = "seq_tweet_id", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tweetIdGenerator")
+    @SequenceGenerator(name = "followerIdGenerator", sequenceName = "seq_follower_id", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "followerIdGenerator")
     @Column(name = "ID", nullable = false, unique = true, insertable = false, updatable = false)
     private Long id;
 
+    public User getUser() {
+        return user;
+    }
 
-    @ManyToMany
-    private List<User> users;
+    //    @ManyToMany(mappedBy = "followers" ,fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @ManyToMany
-    private List<User> followee;
+//    @ManyToMany(mappedBy = "following", fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "follower_id")
+    private User following;
 
 
-    @Column(name = "isDeleted")
+    @Column(name = "deleted")
     @Builder.Default
-    boolean isDeleted = false;
+    boolean deleted = false;
 
 
 }

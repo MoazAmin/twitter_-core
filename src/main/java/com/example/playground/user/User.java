@@ -2,6 +2,7 @@ package com.example.playground.user;
 
 import com.example.playground.follower.Follower;
 import com.example.playground.tweet.Tweet;
+import com.example.playground.tweet.comment.Comment;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +11,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -49,15 +52,17 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<UserRole> userRoles;
 
-    @ManyToMany
-    private List<Follower> followers;
+    @OneToMany(mappedBy = "user")
+    private Set<Follower> followers ;
 
-    @ManyToMany
-    private List<Follower> followee;
-
+    @OneToMany(mappedBy = "following")
+    private Set<Follower> following;
 
     @OneToMany
     private List<Tweet> tweets;
+
+    @OneToMany
+    private Set<Comment> comments;
 
     public SecurityUser toSecurityUser() {
         List<SimpleGrantedAuthority> simpleGrantedAuthorities =

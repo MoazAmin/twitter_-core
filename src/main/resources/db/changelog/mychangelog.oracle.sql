@@ -7,4 +7,9 @@ VALUES (1,'2017-03-14',false,0,10000,'This is my first tweet',null),
 insert into follower(id, user_id, follower_id, deleted)
 VALUES (1,10000, 10001,false),
        (2,10000, 10002,false),
-       (3,10001, 10000,false)
+       (3,10001, 10000,false);
+
+insert into user_follower_table(user_id, follower_id)
+values (10000, 10001),
+       (10000, 10002),
+       (10001, 10000);
